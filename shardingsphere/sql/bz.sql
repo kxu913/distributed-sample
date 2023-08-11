@@ -18,7 +18,7 @@ CREATE DATABASE ds0
 
 CREATE TABLE IF NOT EXISTS public.t_order0
 (
-    order_id numeric NOT NULL,
+    order_id bigint NOT NULL,
     user_id numeric NOT NULL,
     description text COLLATE pg_catalog."default" NOT NULL,
     created_time timestamp without time zone NOT NULL,

@@ -94,6 +94,8 @@
 2023-08-08 15:40:26.440  INFO 45504 --- [h_RMROLE_1_5_32] io.seata.rm.AbstractRMHandler            : Branch committing: 192.168.0.104:8091:5323676813342056907 5323676813342056909 jdbc:postgresql://localhost:5432/ds0 null
 2023-08-08 15:40:26.440  INFO 45504 --- [h_RMROLE_1_5_32] io.seata.rm.AbstractRMHandler            : Branch commit result: PhaseTwo_Committed
 ```
+### Last Update
+- 2023-08-11: add custom key generator and sharding algorithm though SPI. 
 
 ### Problems
 

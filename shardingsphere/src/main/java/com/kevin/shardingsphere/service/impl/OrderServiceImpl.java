@@ -4,6 +4,7 @@ import com.kevin.shardingsphere.domain.Order;
 import com.kevin.shardingsphere.mapper.OrderMapper;
 import com.kevin.shardingsphere.service.OrderService;
 
+import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.shardingsphere.transaction.annotation.ShardingSphereTransactionType;
 import org.apache.shardingsphere.transaction.core.TransactionType;
 
@@ -26,7 +27,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    // @GlobalTransactional(name = "order-group",timeoutMills = 300000 )
+     @GlobalTransactional(name = "order-group",timeoutMills = 300000 )
     @Transactional
     @ShardingSphereTransactionType(TransactionType.BASE)
     public int saveOrder(Order order) {

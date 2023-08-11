@@ -11,6 +11,7 @@ public class ShardingsphereApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ShardingsphereApplication.class, args);
+
 	}
 
 }
