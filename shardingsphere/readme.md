@@ -105,3 +105,4 @@
 - If use ZK as seata servers registration center and discovery center, it looks can't successful, need do more research.
 - Be sure that files list above need exist in seata client.
 - Using seata-all dependency, need use `Transactional` instead of `GlobalTransactional`.
+- Be sure that remove ID mapping when insert object to database when using key generator.

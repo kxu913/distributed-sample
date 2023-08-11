@@ -15,7 +15,6 @@ public class AtomicIntegerKeyGenerator implements KeyGenerateAlgorithm {
     private Properties props = new Properties();
     @Override
     public Comparable<?> generateKey() {
-        System.out.println(key.get());
 
         return key.addAndGet(1);
     }
