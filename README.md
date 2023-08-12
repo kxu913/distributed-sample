@@ -13,3 +13,7 @@ I assume it easily to use, but actually it contains lots of issues, the major is
 **A system own by Ali, it can help you setup a distributed transaction.**
 
 We need start a seata server and create some required tables in both seata database and business database.
+
+## Sentinel
+
+*Sentinel as a traffic management framework, consducted by Alibaba, it includes **circuit breaker**, **Throlting**, and it provides different strategies that used to protent system, such as threads, qps..*
