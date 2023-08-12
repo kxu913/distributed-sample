@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.apache.shardingsphere.sharding.spi.KeyGenerateAlgorithm;
 
 import java.util.Properties;
+import java.util.ServiceLoader;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Getter
@@ -27,6 +28,7 @@ public class AtomicIntegerKeyGenerator implements KeyGenerateAlgorithm {
 
     @Override
     public String getType(){
+        ServiceLoader.load()
         return "ATOMIC";
 
     }
