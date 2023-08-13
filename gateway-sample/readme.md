@@ -1,0 +1,2 @@
+## Issues
+- Not sure why dataId can't recognize by profile, I still need add a service name configuration in nocos server. here is another solution that use namespace and group to distinct different profiles.  
