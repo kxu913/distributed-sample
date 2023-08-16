@@ -1,0 +1,11 @@
+[
+  {
+    "apiName": "order_group_prefix",
+    "predicateItems": [
+      {
+        "pattern": "/order/**",
+        "matchStrategy": 1
+      }
+    ]
+  }
+]

@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: operator
+  labels:
+    app: mysql
+    service: mysql
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: mysql
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: mysql-svc
+  namespace: operator
+  labels:
+    account: mysql-svc
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: operator
+  labels:
+    app: mysql
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: mysql
+        version: v1
+    spec:
+      serviceAccountName: mysql-svc
+      containers:
+        - name: mysql
+          image: debezium/example-mysql:1.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: kevin
+            - name: MYSQL_USER
+              value: kevin
+            - name: MYSQL_PASSWORD
+              value: "888888"
+            - name: TZ
+              value: Asia/Shanghai
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: dbdata
+            - mountPath: /docker-entrypoint-initdb.d/
+              name: initsql
+      volumes:
+        - name: dbdata
+          hostPath:
+            path: /run/desktop/mnt/host/d/data/mysql-data
+            type: Directory
+        - name: initsql
+          hostPath:
+            path: /run/desktop/mnt/host/d/data/mysql-initsql
+            type: Directory
+
+

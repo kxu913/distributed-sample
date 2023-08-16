@@ -17,14 +17,15 @@ public class NacosLoadBalancerConfig {
     @Resource
     NacosDiscoveryProperties nacosDiscoveryProperties;
 
-//    @Bean
-//    public ReactorLoadBalancer<ServiceInstance> reactorServiceInstanceLoadBalancer(
-//            Environment environment,
-//            LoadBalancerClientFactory loadBalancerClientFactory) {
-//        String name = environment.getProperty(LoadBalancerClientFactory.PROPERTY_NAME);
-//        return new NacosLoadBalancer(loadBalancerClientFactory
-//                .getLazyProvider(name, ServiceInstanceListSupplier.class), name, nacosDiscoveryProperties);
-//    }
+    @Bean
+    public ReactorLoadBalancer<ServiceInstance> reactorServiceInstanceLoadBalancer(
+            Environment environment,
+            LoadBalancerClientFactory loadBalancerClientFactory) {
+
+        String name = environment.getProperty(LoadBalancerClientFactory.PROPERTY_NAME);
+        return new NacosLoadBalancer(loadBalancerClientFactory
+                .getLazyProvider(name, ServiceInstanceListSupplier.class), name, nacosDiscoveryProperties);
+    }
 
 
 }

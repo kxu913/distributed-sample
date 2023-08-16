@@ -12,6 +12,10 @@
     <spirngboot.version>2.6.3</spirngboot.version>
     <spring-cloud.version>2021.0.1</spring-cloud.version>
     <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
+    <sentinel.version>1.8.6</sentinel.version>
+    <shardingsphere.version>5.1.2</shardingsphere.version>
+    <mybatis.version>2.3.1</mybatis.version>
+    <seata.version>1.7.0</seata.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -45,6 +49,22 @@
       <optional>true</optional>
     </dependency>
   </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+            </exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
   <modules>
     <module>../gateway-sample</module>
     <module>../order-service</module>

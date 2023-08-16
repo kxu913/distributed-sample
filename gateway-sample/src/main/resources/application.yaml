@@ -5,3 +5,42 @@ spring:
     name: gateway-service
   profiles:
     active: dev
+  cloud:
+    sentinel:
+      filter:
+        enabled: true
+      transport:
+        dashboard: sentinel.kevin.com:80
+        port: 8719
+      datasource:
+#        flow:
+#          nacos:
+#            server-addr: kxu.kevin.com:80
+#            username: nacos
+#            password: 888888
+#            refresh-enabled: true
+#            data-Id: ${spring.application.name}-flow-rules
+#            data-type: json
+#            rule-type: flow
+        gw-flow:
+          nacos:
+            server-addr: kxu.kevin.com:80
+            username: nacos
+            password: 888888
+            data-Id: ${spring.application.name}-gw-flow-rules
+            data-type: json
+            rule-type: gw-flow
+        gw-api-group:
+          nacos:
+            server-addr: kxu.kevin.com:80
+            username: nacos
+            password: 888888
+            data-Id: ${spring.application.name}-api-groups
+            data-type: json
+            rule-type: gw-api-group
+      scg:
+        fallback:
+          mode: response
+          response-status: 429
+          response-body: 访问太频繁
+

@@ -1,11 +1,10 @@
-package com.kevin.shardingsphere.algorithm;
+package com.kevin.sample.order.algorithm;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.shardingsphere.sharding.spi.KeyGenerateAlgorithm;
 
 import java.util.Properties;
-import java.util.ServiceLoader;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Getter

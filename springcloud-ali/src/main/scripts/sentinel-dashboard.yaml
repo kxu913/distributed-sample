@@ -1,0 +1,84 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sentinel-dashboard
+  namespace: operator
+  labels:
+    app: sentinel-dashboard
+    service: sentinel-dashboard
+spec:
+  ports:
+    - name: dashboard
+      port: 8888
+    - name: be
+      port: 8719
+  selector:
+    app: sentinel-dashboard
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sentinel-dashboard-svc
+  namespace: operator
+  labels:
+    account: sentinel-dashboard-svc
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sentinel-dashboard
+  namespace: operator
+  labels:
+    app: sentinel-dashboard
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sentinel-dashboard
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: sentinel-dashboard
+        version: v1
+    spec:
+      serviceAccountName: sentinel-dashboard-svc
+      containers:
+        - name: sentinel-dashboard
+          image: sentinel-dashboard
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8888
+            - containerPort: 8719
+          env:
+            - name: auth.username
+              value: kevin
+            - name: auth.password
+              value: kevin
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: operator
+  name: sentinel-dashboard
+spec:
+  hosts:
+    - "sentinel.kevin.com"
+  gateways:
+    - operator-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: sentinel-dashboard
+            port:
+              number: 8888
+
+
+

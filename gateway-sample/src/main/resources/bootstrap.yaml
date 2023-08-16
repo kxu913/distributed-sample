@@ -3,11 +3,15 @@ spring:
   cloud:
     nacos:
       discovery:
+        username: nacos
+        password: 888888
         service: gateway-service
-        server-addr: 127.0.0.1:8848 #Nacos地址
+        server-addr: nacos.kevin.com:80 #Nacos地址
       config:
+        username: nacos
+        password: 888888
 #        namespace: dev
 #        group: dev
-        server-addr: 127.0.0.1:8848 #Nacos地址
+        server-addr: nacos.kevin.com:80 #Nacos地址
         file-extension: yaml
 
