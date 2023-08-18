@@ -2,12 +2,10 @@ package com.kevin.sample.order.service;
 
 
 
-import com.kevin.sample.order.domain.Order;
-
 import java.util.List;
-
+import com.kevin.sample.domain.Order;
 public interface OrderService {
     public List<Order> getOrder();
 
-    public int saveOrder(Order order);
+    public long saveOrder(Order order);
 }

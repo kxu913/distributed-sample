@@ -1,0 +1,90 @@
+server:
+  port: 7002
+spring:
+  application:
+    name: inventory
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos.kevin.com:80
+        username: nacos
+        password: 888888
+
+  shardingsphere:
+    mode:
+      type: Memory
+    props:
+      show-sql: true
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:postgresql://localhost:5432/ds0
+        username: postgres
+        password: postgres
+        connectionTimeoutMilliseconds: 30000
+        idleTimeoutMilliseconds: 60000
+        maxLifetimeMilliseconds: 1800000
+        maxPoolSize: 50
+        minPoolSize: 1
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:postgresql://localhost:5432/ds1
+        username: postgres
+        password: postgres
+        connectionTimeoutMilliseconds: 30000
+        idleTimeoutMilliseconds: 60000
+        maxLifetimeMilliseconds: 1800000
+        maxPoolSize: 50
+        minPoolSize: 1
+    rules:
+      sharding:
+        tables:
+          t_inventory:
+            actual-data-nodes: ds${0..1}.t_inventory${0..1}
+            database-strategy:
+              standard:
+                sharding-column: status
+                sharding-algorithm-name: statusAlgorithm
+            table-strategy:
+              standard:
+                sharding-column: inventory_id
+                sharding-algorithm-name: inventoryInline
+            key-generate-strategy:
+              column: inventory_id
+              key-generator-name: snowflake
+
+        sharding-algorithms:
+          statusAlgorithm:
+            type: Status
+          inventoryInline:
+            type: INLINE
+            props:
+              algorithm-expression: t_inventory${inventory_id % 2}
+        keyGenerators:
+          snowflake:
+            type: SNOWFLAKE
+
+
+seata:
+  enabled: true
+  application-id: inventory
+  tx-service-group: inventory-group
+  service:
+    vgroup-mapping:
+      inventory-group: inventory-group
+    inventory-group:
+      grouplist: seata.kevin.com:31400
+    enableDegrade: false
+    disable: false
+
+mybatis:
+  configuration:
+    map-underscore-to-caml-case: true
+  type:
+    handlers:
+      package: com.kevin.sample.inventory.mapper.handler
+
+logging:
+  level:
+    com.kevin.sample.order.mapper: debug

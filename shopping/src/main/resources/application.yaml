@@ -1,0 +1,23 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: shopping
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos.kevin.com:80
+        username: nacos
+        password: 888888
+
+seata:
+  enabled: true
+  application-id: shopping
+  tx-service-group: shopping-group
+  service:
+    vgroup-mapping:
+      shopping-group: shopping-group
+    shopping-group:
+      grouplist: seata.kevin.com:31400
+    enableDegrade: false
+    disable: false

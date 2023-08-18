@@ -1,16 +1,20 @@
 package com.kevin.sample.order.controller;
 
-import com.kevin.sample.order.domain.Order;
+import com.google.common.base.Strings;
+
+import com.kevin.sample.domain.Order;
 import com.kevin.sample.order.service.OrderService;
+import io.seata.core.context.RootContext;
 import lombok.AllArgsConstructor;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
 
 @RestController
-@RefreshScope
+@Slf4j
 @AllArgsConstructor
 public class OrderController {
 
@@ -24,8 +28,8 @@ public class OrderController {
     }
 
     @PostMapping("/order")
-    public int saveOrder(@RequestBody Order order){
-        order.setCreatedTime(new Date());
+    public long saveOrder(@RequestBody Order order){
+
         return orderService.saveOrder(order);
     }
 }

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3e266705-a355-46ff-b00f-3a6399f99828" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../inventory/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../inventory/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../inventory/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../inventory/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../inventory/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../inventory/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../inventory/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../inventory/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../inventory/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../inventory/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/kevin/sample/order/config/TransactionConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/kevin/sample/order/config/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/kevin/sample/order/config/converter/StringToEnumConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/kevin/sample/order/constants/KeyValueEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/kevin/sample/order/constants/OrderStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/kevin/sample/order/mapper/handler/EnumTypeHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shopping/src/main/java/com/kevin/sample/shopping/domain/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shopping/src/main/java/com/kevin/sample/shopping/mapper/OrderMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shopping/src/main/java/com/kevin/sample/shopping/service/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shopping/src/main/java/com/kevin/sample/shopping/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shopping/src/main/resources/application.properties.bak" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shopping/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shopping/src/main/resources/file.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shopping/src/main/resources/registry.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shopping/src/main/resources/seata.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springcloud-ali/src/main/init/config/shardingsphere/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springcloud-ali/src/main/init/config/shardingsphere/server.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springcloud-ali/src/main/init/config/shardingsphere/sharding-rules.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/kevin/sample/order/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/kevin/sample/order/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/kevin/sample/order/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/kevin/sample/order/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/kevin/sample/order/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/kevin/sample/order/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shopping/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../shopping/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shopping/src/main/java/com/kevin/sample/shopping/controller/ShoppingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../shopping/src/main/java/com/kevin/sample/shopping/controller/ShoppingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shopping/src/main/resources/application.properties" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2U97c81MRr9eDqHKEBx5MADDgvC" />
+  <component name="ProjectViewState">
+    <option name="flattenPackages" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3e266705-a355-46ff-b00f-3a6399f99828" name="Changes" comment="" />
+      <created>1692340020018</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1692340020018</updated>
+    </task>
+    <servers />
+  </component>
+</project>

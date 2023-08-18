@@ -2,7 +2,7 @@ package com.kevin.sample.order.mapper;
 
 
 
-import com.kevin.sample.order.domain.Order;
+import com.kevin.sample.domain.Order;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -21,6 +21,7 @@ public interface OrderMapper {
     @Select("select * from t_order order by order_id desc")
     public List<Order> getOrder();
 
-    @Insert("insert into t_order(user_id, description,created_time) values(#{userId},#{description},#{createdTime})")
+    @Insert("insert into t_order(user_id, description,created_time) values(#{userId},#{description},#{createdTime}) returning order_id")
+    @Options(useGeneratedKeys = true,keyProperty = "orderId", keyColumn = "order_id")
     public int saveOrder(Order order);
 }

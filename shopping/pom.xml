@@ -12,6 +12,20 @@
     <relativePath>../springcloud-ali</relativePath>
   </parent>
   <dependencies>
+
+    <dependency>
+      <groupId>com.kevin.sample</groupId>
+      <artifactId>common</artifactId>
+      <version>${kevin.sample.version}</version>
+      <!-- need exclude it, otherwise there are will some problems about loadbalance-->
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-aop</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -20,12 +34,26 @@
       <groupId>com.alibaba.cloud</groupId>
       <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
     </dependency>
-<!--    be make sure we need add loadbalancer dependency into pom file, otherwise, even you specified @Loadbalance in RestTemplate, it didn't effective.-->
+    <!--    be make sure we need add loadbalancer dependency into pom file, otherwise, even you specified @Loadbalance in RestTemplate, it didn't effective.-->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-loadbalancer</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.apache.shardingsphere</groupId>
+      <artifactId>shardingsphere-transaction-base-seata-at</artifactId>
+      <version>${shardingsphere.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+    </dependency>
 
+    <dependency>
+      <groupId>io.seata</groupId>
+      <artifactId>seata-spring-boot-starter</artifactId>
+      <version>${seata.version}</version>
+    </dependency>
 
   </dependencies>
   <build>

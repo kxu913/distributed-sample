@@ -16,6 +16,7 @@
     <shardingsphere.version>5.1.2</shardingsphere.version>
     <mybatis.version>2.3.1</mybatis.version>
     <seata.version>1.7.0</seata.version>
+    <kevin.sample.version>1.0-SNAPSHOT</kevin.sample.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -68,6 +69,9 @@
   <modules>
     <module>../gateway-sample</module>
     <module>../order-service</module>
+    <module>../inventory</module>
     <module>../shopping</module>
+    <module>../domain</module>
+    <module>../common</module>
   </modules>
 </project>
