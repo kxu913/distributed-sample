@@ -1,5 +1,10 @@
 server:
   port: 7000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "prometheus"
 spring:
   application:
     name: order
@@ -9,6 +14,9 @@ spring:
         server-addr: nacos.kevin.com:80
         username: nacos
         password: 888888
+  zipkin:
+    base-url: http://zipkin.kevin.com:80
+
   shardingsphere:
     mode:
       type: Memory

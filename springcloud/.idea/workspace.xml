@@ -5,13 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f193b34d-eb4c-43c9-b08e-e1c8e548ab79" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../img_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../public/result-0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../public/result-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../springcloud-ali/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springcloud-ali/src/main/init/config/prometheus.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springcloud-ali/src/main/init/sql/zipkin.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springcloud-ali/src/main/scripts/prometheus.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../springcloud-ali/src/main/scripts/zipkin.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gateway-sample/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gateway-sample/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gateway-sample/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../gateway-sample/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../inventory/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shopping/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../shopping/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shopping/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../shopping/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springcloud-ali/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springcloud-ali/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springcloud-ali/src/main/init/config/nacos.application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../springcloud-ali/src/main/init/config/nacos.application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springcloud-ali/src/main/scripts/gateway.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../springcloud-ali/src/main/scripts/gateway.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springcloud-ali/src/main/scripts/nacos.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../springcloud-ali/src/main/scripts/nacos.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -16,6 +16,8 @@
     <shardingsphere.version>5.1.2</shardingsphere.version>
     <mybatis.version>2.3.1</mybatis.version>
     <seata.version>1.7.0</seata.version>
+    <zipkin.version>2.2.8.RELEASE</zipkin.version>
+    <prometheus.version>1.11.3</prometheus.version>
     <kevin.sample.version>1.0-SNAPSHOT</kevin.sample.version>
   </properties>
   <dependencyManagement>
@@ -44,6 +46,21 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-zipkin</artifactId>
+      <version>${zipkin.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.micrometer</groupId>
+      <artifactId>micrometer-registry-prometheus</artifactId>
+      <version>${prometheus.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>

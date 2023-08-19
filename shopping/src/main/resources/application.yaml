@@ -1,5 +1,21 @@
 server:
   port: 7001
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "prometheus"
+  metrics:
+    distribution:
+      sla:
+        http:
+          server:
+            requests: 1ms,5ms,10ms,50ms,100ms,200ms,500ms,1s,5s
+    # 在 Prometheus 中添加特别的 Labels
+    tags:
+      # 必须加上对应的应用名，因为需要以应用的维度来查看对应的监控
+      application: shopping
+
 spring:
   application:
     name: shopping
@@ -9,6 +25,8 @@ spring:
         server-addr: nacos.kevin.com:80
         username: nacos
         password: 888888
+  zipkin:
+    base-url: http://zipkin.kevin.com:80
 
 seata:
   enabled: true
@@ -21,3 +39,4 @@ seata:
       grouplist: seata.kevin.com:31400
     enableDegrade: false
     disable: false
+

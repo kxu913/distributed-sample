@@ -14,9 +14,18 @@
 - Apache Shardingsphere
 - Seata
 
+### Monitoring
+- Zipkin
+- Promethenus
+- Grafana
+
 ### Preparation
 
-*You need have nacos/seata servers, you can reference with `springcloud-ali` module to see how to use k8s+istio setup environment.*
+*please reference with `springcloud-ali` module to see how to use k8s+istio setup all modules.*
+
+### Code
+- Use `nacos.kevin.com:80` as nacors server-addr (`spring.cloud.nacos.*.server-addr`)
+- Use `seata.kevin.com:31400` as seata group list(`*.grouplist`).
 
 ### Major Configurations
 - Gateway Configuration.
@@ -211,6 +220,7 @@ there are still 3 orders in database.
 2023-08-18 20:23:09.691  INFO 33420 --- [h_RMROLE_1_8_32] i.seata.rm.datasource.DataSourceManager  : branch rollback success, xid:10.1.3.174:8091:3288053320901810296, branchId:3288053320901810298
 2023-08-18 20:23:09.692  INFO 33420 --- [h_RMROLE_1_8_32] io.seata.rm.AbstractRMHandler            : Branch Rollbacked result: PhaseTwo_Rollbacked
 ```
+
 
 
 

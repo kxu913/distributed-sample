@@ -1,0 +1,96 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  namespace: operator
+  labels:
+    app: grafana
+    service: grafana
+spec:
+  ports:
+    - name: grafana
+      port: 3000
+  selector:
+    app: grafana
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: grafana-svc
+  namespace: operator
+  labels:
+    account: grafana-svc
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+  namespace: operator
+  labels:
+    app: grafana
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: grafana
+        version: v1
+    spec:
+      serviceAccountName: grafana-svc
+      containers:
+        - name: grafana
+          image: grafana/grafana-enterprise:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          env:
+            - name: GF_PATHS_CONFIG
+              value: /etc/grafana/grafana.ini
+            - name: GF_PATHS_DATA
+              value: /var/lib/grafana # this is default value, reference with https://grafana.com/docs/grafana/latest/setup-grafana/configure-docker/ to see more information.
+          volumeMounts:
+            - mountPath: /var/lib/grafana
+              name: data
+            - mountPath: /etc/grafana/grafana.ini
+              name: config
+
+      volumes:
+        - name: config
+          hostPath:
+            path: /run/desktop/mnt/host/d/workspace/java-sample/springcloud-ali/src/main/init/config/grafana.ini
+            type: File
+        - name: data
+          hostPath:
+            path: /run/desktop/mnt/host/d/data/grafana
+            type: Directory
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: operator
+  name: grafana
+spec:
+  hosts:
+    - "grafana.kevin.com"
+  gateways:
+    - operator-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: grafana
+            port:
+              number: 3000
+
+
+

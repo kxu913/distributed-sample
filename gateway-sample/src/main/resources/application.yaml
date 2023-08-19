@@ -1,10 +1,17 @@
 server:
   port: 7999
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "prometheus"
 spring:
   application:
     name: gateway-service
   profiles:
     active: dev
+  zipkin:
+    base-url: http://zipkin.kevin.com:80
   cloud:
     sentinel:
       filter:
@@ -12,6 +19,7 @@ spring:
       transport:
         dashboard: sentinel.kevin.com:80
         port: 8719
+
       datasource:
 #        flow:
 #          nacos:
@@ -24,7 +32,7 @@ spring:
 #            rule-type: flow
         gw-flow:
           nacos:
-            server-addr: kxu.kevin.com:80
+            server-addr: nacos.kevin.com:80
             username: nacos
             password: 888888
             data-Id: ${spring.application.name}-gw-flow-rules
@@ -32,7 +40,7 @@ spring:
             rule-type: gw-flow
         gw-api-group:
           nacos:
-            server-addr: kxu.kevin.com:80
+            server-addr: nacos.kevin.com:80
             username: nacos
             password: 888888
             data-Id: ${spring.application.name}-api-groups

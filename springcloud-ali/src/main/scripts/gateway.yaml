@@ -18,6 +18,9 @@ spec:
         - "nacos.kevin.com"
         - "sentinel.kevin.com"
         - "seata.kevin.com"
+        - "zipkin.kevin.com"
+        - "prometheus.kevin.com"
+        - "grafana.kevin.com"
 
 ---
 apiVersion: networking.istio.io/v1alpha3

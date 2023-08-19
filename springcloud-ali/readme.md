@@ -33,25 +33,47 @@
     - use nacos as seata server configuration.
     - create seata server configuration in nacos.
 
+- Create Zipkin in k8s
+  `kubectl apply -f springcloud-ali/src/scripts/zipkin.yaml`
+  *Use mysql as persistent storage, need execute init/sql/zipkin.sql*
+
+- Create Prometheus in k8s
+  `kubectl apply -f springcloud-ali/src/scripts/promethenus.yaml`
+  - make sure that micro services expose `/actuator/prometheus` api.
+  - configure the micro services in `init/config/prometheus`.
+  *Create another tool to fetch services config from Nacos, and call `reload` api to implement dynamic update prometheus*
+
+- Create Grafana in k8s
+  `kubectl apply -f springcloud-ali/src/scripts/grafana.yaml`
+  - mount configuration.
+  - mount data folder.
+
 - Createa gateway for above services.
 
   `kubectl apply -f springcloud-ali/src/scripts/gateway.yaml`
   *There is an extra TCP gateway for seata 8091 port, mapped 8091->31400*
 
-- Update configration in micro services.
-    ```
-    spring.cloud.nacos.*.server-addr=nacos.kevin.com:80
-    *.grouplist = "seata.kevin.com:31400"
-    ```
-
 - Access Dashboards.
-    ```
-    http://nacos.kevin.com/nacos/#/configeditor?serverId=center&dataId=seataServer&group=DEFAULT_GROUP&namespace=557c06e3-dff2-4448-94ce-6b6c4a7083be&edasAppName=&edasAppId=&searchDataId=&searchGroup=&pageSize=10&pageNo=1
+  - [Nacos - http://nacos.kevin.com/nacos/ ](http://nacos.kevin.com/nacos) 
+  - [Sentinel -http://sentinel.kevin.com/](http://sentinel.kevin.com/#/dashboard/gateway/identity/gateway-service)
+  - [Seata - http://seata.kevin.com](http://seata.kevin.com/#/globallock/list)
+  - [Zipkin - http://zipkin.kevin.com/zipkin](http://zipkin.kevin.com/zipkin/)
+  - [Prometheus - http://prometheus.kevin.com](http://prometheus.kevin.com/targets?search=)
+  - [Grafana - http://grafana.kevin.com](http://grafana.kevin.com/?orgId=1)
 
-    http://sentinel.kevin.com/#/dashboard/gateway/identity/gateway-service
-
-    http://seata.kevin.com/#/globallock/list
-    ```
+- Snapshot
+  - Nacos
+  ![nacos.png](../public/nacos.png)
+  - Sentinel
+  ![sentinel](../public/sentinel.png)
+  - Seata
+  ![seata](../public/seata.png)
+  - Zipkin
+  ![zipkin](../public/zipkin.png)
+  - Prometheus
+  ![prometheus](../public/prometheus.png)
+  - Grafana
+  ![grafana](../public/grafana.png)
 
 
 
