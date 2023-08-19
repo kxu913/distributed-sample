@@ -21,7 +21,7 @@
 
 ### Preparation
 
-*please reference with `springcloud-ali` module to see how to use k8s+istio setup all modules.*
+*please reference with [`springcloud-ali`](./springcloud-ali) module to see how to use k8s+istio setup all modules.*
 
 ### Code
 - Use `nacos.kevin.com:80` as nacors server-addr (`spring.cloud.nacos.*.server-addr`)
