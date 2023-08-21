@@ -48,10 +48,57 @@ spec:
         - name: prometheus
           image: prom/prometheus:v2.41.0
           imagePullPolicy: IfNotPresent
+          args:
+            - "--web.enable-lifecycle"
           ports:
             - containerPort: 9090
           volumeMounts:
-            - mountPath: /etc/prometheus/prometheus.yml
+            - mountPath: /prometheus/prometheus.yml
+              name: config
+      volumes:
+        - name: config
+          hostPath:
+            path: /run/desktop/mnt/host/d/workspace/java-sample/springcloud-ali/src/main/init/config/prometheus.yaml
+            type: File
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-cli
+  namespace: operator
+  labels:
+    app: prometheus-cli
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus-cli
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: prometheus-cli
+        version: v1
+    spec:
+      serviceAccountName: prometheus-svc
+      containers:
+        - name: prometheus-cli
+          image: prometheus-cli
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: nacos_host
+              value: http://nacos:8848
+            - name: nacos_user
+              value: nacos
+            - name: nacos_pwd
+              value: "888888"
+            - name: prometheus_host
+              value: http://prometheus:9090
+
+          volumeMounts:
+            - mountPath: /work/prometheus.yaml
               name: config
       volumes:
         - name: config

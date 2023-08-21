@@ -35,24 +35,9 @@ scrape_configs:
     static_configs:
       - targets: ["nacos:8848"]
 
- 
-  - job_name: "shopping"
+ {{range $range, $host := .}}
+  - job_name: "{{.Name}}"
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ["192.168.0.104:7001"] 
-
-  - job_name: "gateway-service"
-    metrics_path: '/actuator/prometheus'
-    static_configs:
-      - targets: ["192.168.0.104:7999"] 
-
-  - job_name: "order"
-    metrics_path: '/actuator/prometheus'
-    static_configs:
-      - targets: ["192.168.0.104:7000"] 
-
-  - job_name: "inventory"
-    metrics_path: '/actuator/prometheus'
-    static_configs:
-      - targets: ["192.168.0.104:7002"] 
-
+      - targets: ["{{.Ip}}"] 
+{{ end }}

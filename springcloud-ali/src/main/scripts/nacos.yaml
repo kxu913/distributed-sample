@@ -7,6 +7,8 @@ metadata:
     app: nacos
     service: nacos
 spec:
+#  type: ExternalName
+#  externalName: nacos.operator.svc.cluster.local
   ports:
     - name: ui
       port: 8848
@@ -34,7 +36,7 @@ metadata:
     app: nacos
     version: v1
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: nacos
@@ -55,7 +57,7 @@ spec:
             - containerPort: 8848
           env:
             - name: MODE
-              value: standalone
+              value: cluster
           volumeMounts:
             - mountPath: /home/nacos/conf/application.properties
               name: config

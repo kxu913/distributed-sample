@@ -140,6 +140,11 @@ seata:
 - **order**: a micro service mock order service, provide a `POST` api that used to create a order.
 - **inventory**: a micro service mock inventory service, provide a `PUT` api that used to update `pcs`.
 
+### Tools
+*The project also contains some tools that used to support operation.*
+
+- **prometheus-cli**: integrate with Nacos and dynamic update prometheus targets. see [prometheus-cli](./prometheus-cli) to get detail information.
+
 ### WORKFLOW
 1. Call shopping service using api gateway.
 2. Create an order.
