@@ -19,6 +19,9 @@
 - Promethenus
 - Grafana
 
+### System Architecture
+![img.png](public/distributed-system.png)
+
 ### Preparation
 
 *please reference with [`springcloud-ali`](./springcloud-ali) module to see how to use k8s+istio setup all modules.*
