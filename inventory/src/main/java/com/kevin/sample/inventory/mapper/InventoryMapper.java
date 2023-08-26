@@ -20,6 +20,9 @@ public interface InventoryMapper {
     @Insert("insert into t_inventory(name, pcs, status, created_time) values(#{name},#{pcs},#{status},#{createdTime})")
     public int saveInventory(Inventory inventory);
 
-    @Update("update t_inventory set pcs = #{pcs} where inventory_id=#{id}")
-    public int updateInventory( @Param("id") long id, @Param("pcs") int pcs);
+    @Update("update t_inventory set sale = sale+1 where inventory_id=#{id}")
+    public int updateInventory( @Param("id") long id);
+
+    @Select("select * from t_inventory where inventory_id=#{id}")
+    Inventory getInventory(long id);
 }

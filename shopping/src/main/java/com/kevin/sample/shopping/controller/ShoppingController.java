@@ -2,9 +2,11 @@ package com.kevin.sample.shopping.controller;
 
 
 import com.kevin.sample.common.annotation.Xid;
-import com.kevin.sample.domain.Inventory;
+
 import com.kevin.sample.domain.Order;
+
 import com.kevin.sample.domain.Shopping;
+
 import io.seata.core.context.RootContext;
 import io.seata.spring.annotation.GlobalTransactional;
 import lombok.AllArgsConstructor;
@@ -21,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
 
 
@@ -32,11 +34,6 @@ public class ShoppingController {
 
     @Autowired
     private final RestTemplate restTemplate;
-    @GetMapping("/shopping/order")
-
-    public List<Order> getOrder(){
-        return restTemplate.getForObject("http://order/order", List.class);
-    }
     @PostMapping("/shopping")
 
     @GlobalTransactional(name = "shopping-group",timeoutMills = 300000 )
@@ -48,16 +45,15 @@ public class ShoppingController {
         log.info("xid: {}",xid);
         HttpHeaders headers = new HttpHeaders();
         headers.add("xid", xid);
-        HttpEntity<Order> entity = new HttpEntity<>(shopping.getOrder(),headers);
+        Order order = shopping.getOrder();
+        order.setInventoryId(shopping.getInventoryId());
+        HttpEntity<Order> entity = new HttpEntity<>(order,headers);
         ResponseEntity<Long> id = restTemplate.postForEntity("http://order/order",entity,Long.class);
-        Inventory inventory = new Inventory();
-        inventory.setInventoryId(shopping.getInventoryId());
-        inventory.setPcs(shopping.getPcs());
-        HttpEntity<Inventory> inventoryEntity = new HttpEntity<>(inventory,headers);
-        restTemplate.put("http://inventory/inventory",inventoryEntity);
+        HttpEntity<Void> inventoryEntity = new HttpEntity<>(null,headers);
+        restTemplate.put("http://inventory/inventory/"+shopping.getInventoryId(),inventoryEntity);
         Map<String,Object> rtn = new HashMap<>();
         rtn.put("orderId",id.getBody());
-        rtn.put("inventory",inventory.getInventoryId());
+        rtn.put("inventory",shopping.getInventoryId());
         return rtn;
     }
 }

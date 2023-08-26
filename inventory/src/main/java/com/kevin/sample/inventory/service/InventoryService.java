@@ -10,5 +10,7 @@ public interface InventoryService {
 
     public long saveInventory(Inventory inventory);
 
-    public long updateInventory(long id, int pcs);
+    public long updateInventory(long id);
+
+    public Inventory getInventory(long id);
 }

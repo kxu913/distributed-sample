@@ -32,4 +32,10 @@ public class OrderController {
 
         return orderService.saveOrder(order);
     }
+
+    @PutMapping("/order")
+    public long updateOrder(@RequestBody Order order){
+
+        return orderService.updateOrder(order);
+    }
 }

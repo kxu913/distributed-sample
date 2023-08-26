@@ -3,6 +3,7 @@ package com.kevin.sample.order.service.impl;
 
 
 import com.kevin.sample.domain.Order;
+import com.kevin.sample.domain.enums.OrderStatus;
 import com.kevin.sample.order.mapper.OrderMapper;
 import com.kevin.sample.order.service.OrderService;
 import io.seata.core.context.RootContext;
@@ -34,8 +35,14 @@ public class OrderServiceImpl implements OrderService {
     @GlobalTransactional(name = "order-group",timeoutMills = 300000 )
     @ShardingSphereTransactionType(TransactionType.BASE)
     public long saveOrder(Order order) {
+        order.setStatus(OrderStatus.CREATED);
         order.setCreatedTime(new Date());
         orderMapper.saveOrder(order);
         return order.getOrderId();
+    }
+
+    @Override
+    public int updateOrder(Order order) {
+        return orderMapper.updateOrderStatus(order.getOrderId(),order.getStatus());
     }
 }

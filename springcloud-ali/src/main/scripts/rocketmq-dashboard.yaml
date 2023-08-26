@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rocketmq-dashboard
+  namespace: operator
+  labels:
+    app: rocketmq-dashboard
+    service: rocketmq-dashboard
+spec:
+#  type: ExternalName
+#  externalName: nacos.operator.svc.cluster.local
+  ports:
+    - name: dashboard
+      port: 8080
+  selector:
+    app: rocketmq-dashboard
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: rocketmq-dashboard-svc
+  namespace: operator
+  labels:
+    account: rocketmq-dashboard-svc
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rocketmq-dashboard
+  namespace: operator
+  labels:
+    app: rocketmq-dashboard
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rocketmq-dashboard
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: rocketmq-dashboard
+        version: v1
+    spec:
+      serviceAccountName: rocketmq-dashboard-svc
+      containers:
+        - name: rocketmq-dashboard
+          image: apacherocketmq/rocketmq-dashboard:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: JAVA_OPTS
+              value: -Drocketmq.namesrv.addr=rocketmq-srv:9876
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: operator
+  name: rocketmq-dashboard
+spec:
+  hosts:
+    - "rocketmq.kevin.com"
+  gateways:
+    - operator-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: rocketmq-dashboard
+            port:
+              number: 8080
+
+
+

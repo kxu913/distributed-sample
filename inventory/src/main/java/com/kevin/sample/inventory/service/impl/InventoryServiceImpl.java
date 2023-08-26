@@ -37,7 +37,12 @@ public class InventoryServiceImpl implements InventoryService {
     @Override
     @GlobalTransactional(name="inventory-group")
     @ShardingSphereTransactionType(TransactionType.BASE)
-    public long updateInventory( long id, int pcs) {
-        return mapper.updateInventory(id,pcs);
+    public long updateInventory( long id) {
+        return mapper.updateInventory(id);
+    }
+
+    @Override
+    public Inventory getInventory(long id) {
+        return mapper.getInventory(id);
     }
 }

@@ -8,4 +8,6 @@ public interface OrderService {
     public List<Order> getOrder();
 
     public long saveOrder(Order order);
+
+    public int updateOrder(Order order);
 }

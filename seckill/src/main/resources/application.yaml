@@ -1,0 +1,51 @@
+server:
+  port: 7004
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "prometheus"
+  metrics:
+    distribution:
+      sla:
+        http:
+          server:
+            requests: 1ms,5ms,10ms,50ms,100ms,200ms,500ms,1s,5s
+    # 在 Prometheus 中添加特别的 Labels
+    tags:
+      # 必须加上对应的应用名，因为需要以应用的维度来查看对应的监控
+      application: seckill
+
+spring:
+  application:
+    name: seckill
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos.kevin.com:80
+        username: nacos
+        password: 888888
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-active: 20
+        max-idle: 20
+        max-wait: 10
+        min-idle: 5
+  zipkin:
+    base-url: http://zipkin.kevin.com:80
+
+
+rocketmq:
+  name-server: 127.0.0.1:9876
+  namespace: demo
+  topic: shopping
+  producer:
+    group: shopping-producer
+  consumer:
+    group: shopping-consumer
+
+

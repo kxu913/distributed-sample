@@ -30,9 +30,15 @@ public class InventoryController {
 
     }
 
-    @PutMapping("/inventory")
-    public long getInventories(@RequestBody Inventory inventory){
-        return inventoryService.updateInventory(inventory.getInventoryId(),inventory.getPcs());
+    @GetMapping("/inventory/{id}")
+    public Inventory getInventories(@PathVariable long id){
+        return inventoryService.getInventory(id);
+
+    }
+
+    @PutMapping("/inventory/{id}")
+    public long sale(@PathVariable long id){
+        return inventoryService.updateInventory(id);
 
     }
 }

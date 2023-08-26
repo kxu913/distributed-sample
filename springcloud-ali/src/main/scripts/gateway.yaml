@@ -21,6 +21,7 @@ spec:
         - "zipkin.kevin.com"
         - "prometheus.kevin.com"
         - "grafana.kevin.com"
+        - "rocketmq.kevin.com"
 
 ---
 apiVersion: networking.istio.io/v1alpha3
@@ -38,3 +39,32 @@ spec:
       protocol: TCP
     hosts:
     - "seata.kevin.com"
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: tcp-gateway
+  namespace: operator
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+    - port:
+        number: 10911
+        name: rocketmq-10911
+        protocol: TCP
+      hosts:
+        - "*"
+    - port:
+        number: 10909
+        name: rocketmq-10909
+        protocol: TCP
+      hosts:
+        - "*"
+    - port:
+        number: 9876
+        name: rocketmq-9876
+        protocol: TCP
+      hosts:
+        - "*"

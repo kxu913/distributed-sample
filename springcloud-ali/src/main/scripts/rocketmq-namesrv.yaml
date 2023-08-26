@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rocketmq-srv
+  namespace: operator
+  labels:
+    app: rocketmq-srv
+    service: rocketmq-srv
+spec:
+  ports:
+    - name: be
+      port: 9876
+  selector:
+    app: rocketmq-srv
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: rocketmq-srv-svc
+  namespace: operator
+  labels:
+    account: rocketmq-srv-svc
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rocketmq-srv
+  namespace: operator
+  labels:
+    app: rocketmq-srv
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rocketmq-srv
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: rocketmq-srv
+        version: v1
+    spec:
+      serviceAccountName: rocketmq-srv-svc
+      containers:
+        - name: rocketmq-srv
+          image: apache/rocketmq:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9876
+          command:
+            - /bin/sh
+          args:
+            - mqnamesrv
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: rocketmq-srv
+  namespace: operator
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - tcp-gateway
+  tcp:
+    - match:
+        - port: 9876
+      route:
+        - destination:
+            host: rocketmq-srv
+            port:
+              number: 9876
+
+
+
+

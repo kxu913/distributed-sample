@@ -1,0 +1,46 @@
+server:
+  port: 7003
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "prometheus"
+spring:
+  application:
+    name: message-sample
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ds0
+    username: postgres
+    password: postgres
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos.kevin.com:80
+        username: nacos
+        password: 888888
+  zipkin:
+    base-url: http://zipkin.kevin.com:80
+
+rocketmq:
+  name-server: localhost:9876
+  namespace: demo
+  topic: demo
+  delay-topic: demo-delay
+  tx-topic: demo-tx
+  producer:
+    group: demo-producer
+  consumer:
+    group: demo-consumer
+
+  delay-producer:
+    group: demo-delay-producer
+  delay-consumer:
+    group: demo-delay-consumer
+
+  tx-producer:
+    group: demo-tx-producer
+  tx-consumer:
+    group: demo-tx-consumer
+
+
+

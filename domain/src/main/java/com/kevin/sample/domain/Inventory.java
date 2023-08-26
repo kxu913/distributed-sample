@@ -11,6 +11,7 @@ public class Inventory {
     private long inventoryId;
     private String name;
     private int pcs;
+    private int sale;
     private InventoryStatus status;
     private Date createdTime;
 
