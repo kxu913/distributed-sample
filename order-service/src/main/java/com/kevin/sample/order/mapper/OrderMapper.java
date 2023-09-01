@@ -18,7 +18,7 @@ public interface OrderMapper {
             @Result(property = "description",column = "description"),
             @Result(property = "createdTime",column = "created_time"),
             @Result(property = "status",column = "status"),
-            @Result(property = "inventoryId", column = "inventory_id")
+            @Result(property = "inventoryId", column = "inventory_id"),
     })
 
     @Select("select * from t_order order by order_id desc")

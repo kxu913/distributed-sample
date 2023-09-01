@@ -1,0 +1,31 @@
+server:
+  port: 8000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "prometheus"
+spring:
+  application:
+    name: uim
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos.kevin.com:80
+        username: nacos
+        password: 888888
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sampleuser
+    username: postgres
+    password: postgres
+  zipkin:
+    base-url: http://zipkin.kevin.com:80
+
+mybatis:
+  configuration:
+    map-underscore-to-caml-case: true
+
+
+logging:
+  level:
+    com.kevin.sample.uim.mapper: debug
