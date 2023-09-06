@@ -21,8 +21,8 @@
 ### Code-generator-tools
 *The project also contains some tools that used to generate codes or simplify operations.*
 
-- **prometheus-cli**: integrate with Nacos and dynamic update prometheus targets. see [prometheus-cli](./prometheus-cli) to get detail information.
-- **java-web-cli**: used to auto generate controller/service/model/mapper codes base on database tables.
+- **prometheus-cli**: integrate with Nacos and dynamic update prometheus targets. see [prometheus-cli](./code-generator-tools/prometheus-cli/readme.md) to get detail information.
+- **java-web-cli**: used to auto generate controller/service/model/mapper codes base on database tables. see [java-web-cli](./code-generator-tools/java-web-cli/readme.md) to get detail information.
 
       
     
