@@ -1,0 +1,37 @@
+server:
+  port: 8002
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: uim-client
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: 7303adf998aeaed89cf2
+            client-secret: 4c53dbce42180499c2593a28ef93726fddfbc583
+          localhost:
+            client-id: kevin
+            client-secret: kevin
+            scope:
+            - "openid"
+            - "user:read"
+            - "user:write"
+            client-authentication-method: client_secret_basic
+            authorization-grant-type: authorization_code
+            redirect-uri: http://127.0.0.1:8002/login/oauth2/code/localhost
+            provider: custom-issuer
+            client-name: Localhost
+        provider:
+          custom-issuer:
+            issuer-uri: http://uim.kevin.com
+
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.security.oauth2: DEBUG

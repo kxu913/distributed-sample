@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>common</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>common</name>
+  <parent>
+    <groupId>com.kevin.sample</groupId>
+    <artifactId>springcloud-ali</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../springcloud-sample-parent</relativePath>
+  </parent>
+  <dependencies>
+    <dependency>
+      <groupId>com.kevin.sample</groupId>
+      <artifactId>domain</artifactId>
+      <version>${kevin.sample.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-aop</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.seata</groupId>
+      <artifactId>seata-core</artifactId>
+      <version>${seata.version}</version>
+    </dependency>
+
+  </dependencies>
+</project>

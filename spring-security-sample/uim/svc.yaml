@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: uim
+  namespace: spring-app
+  labels:
+    app: uim
+    service: uim
+spec:
+  ports:
+    - name: be
+      port: 8000
+  selector:
+    app: uim
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: uim-svc
+  namespace: spring-app
+  labels:
+    account: uim-svc
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uim
+  namespace: spring-app
+  labels:
+    app: uim
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: uim
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: uim
+        version: v1
+    spec:
+      serviceAccountName: uim-svc
+      containers:
+        - name: uim
+          image: uim
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          env:
+            - name: spring.profiles.active
+              value: stage
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: spring-app
+  name: uim
+spec:
+  hosts:
+    - "uim.kevin.com"
+  gateways:
+    - uim-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: uim
+            port:
+              number: 8000
+
+
+

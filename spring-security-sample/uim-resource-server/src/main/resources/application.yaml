@@ -1,0 +1,17 @@
+server:
+  port: 8001
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: uim-resource-server
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://uim.kevin.com/oauth2/jwks
+
+logging:
+  level:
+    org.springframework.security.oauth2: DEBUG
